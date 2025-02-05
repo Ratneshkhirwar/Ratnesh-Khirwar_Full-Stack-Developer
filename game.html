@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Cards</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .wrapper{
+        display: flex;
+    }
+
+    .cards {
+        background-color: #111;
+        margin: 10px;
+        height: 400px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        flex-direction: column;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .noob {
+        font-size: 50px;
+        color: #727272;
+    }
+    button{
+        padding: 10px;
+        font: 1em sans-serif;
+        width: 200px;
+        cursor: pointer;
+    }
+    p{
+        font-size: 2rem;
+        font-family: sans-serif;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <main>
+        <p>Click on the black container in the way that it <br> matches the pattern after Checking it</p>
+        <div class="wrapper">
+            <div class="cards" onclick="revealone()">
+                <span id="cardone"></span>
+                <div class="noob" id="one"></div>
+            </div>
+            <div class="cards" onclick="revealtwo()">
+                <span id="cardtwo"></span>
+                <div class="noob" id="two"></div>
+            </div>
+            <div class="cards" onclick="revealthree()">
+                <span id="cardthree"></span>
+                <div class="noob" id="three"></div>
+            </div>
+        </div>
+
+        <button onclick="check()">Check</button>
+    </main>
+</body>
+
+<script>
+
+    let noOne = getRandomNumber(1, 3);
+    let noTwo = getRandomNumber(1, 3);
+    let noThree = getRandomNumber(1, 3);
+    let array = [""]
+    let score = 50
+
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    while (noTwo === noOne) {
+        noTwo = getRandomNumber(1, 3);
+    }
+
+    while (noThree === noOne || noThree === noTwo) {
+        noThree = getRandomNumber(1, 3);
+    }
+
+    let tap = 1
+
+    function revealone() {
+        array.push(noOne)
+        document.getElementById("one").innerHTML = tap;
+        tap++
+    }
+
+    function revealtwo() {
+        array.push(noTwo)
+        document.getElementById("two").innerHTML = tap;
+        tap++
+    }
+
+    function revealthree() {
+        array.push(noThree)
+        document.getElementById("three").innerHTML = tap;
+        tap++
+    }
+
+    function check() {
+
+        let fir = array[1]
+        let sec = array[2]
+        let thi = array[3]
+
+        document.getElementById("cardone").innerHTML = `<span>${noOne}</span>`;
+        document.getElementById("cardtwo").innerHTML = `<span>${noTwo}</span>`;
+        document.getElementById("cardthree").innerHTML = `<span>${noThree}</span>`;
+
+        if (fir == 1 && sec === 2 && thi === 3) {
+            score += 6
+            console.log(score)
+        } else {
+            score -= 3
+            console.log("You Lost");
+        }
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website of Ratnesh Khirwar - Web Developer and Designer">
+    <title>Portfolio | Ratnesh Khirwar</title>
+
+    <!-- External CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <!-- Internal CSS -->
+    <style>
+        :root {
+            --primary-color: #6f4bff;
+            --bg-dark: #111;
+            --text-light: #fff;
+            --text-dark: #000;
+            --gray-normal: #7c7c7c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Raleway", sans-serif;
+        }
+
+        *::selection {
+            background-color: rgba(0, 0, 0, 0.34);
+            text-decoration: underline;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            scroll-behavior: smooth;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Loader Styles */
+        #main-body {
+            display: none;
+        }
+
+        #loader {
+            position: fixed;
+            z-index: 5;
+            background-color: var(--bg-dark);
+            width: 100vw;
+        }
+
+        #fsDiv {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        #elem,
+        #lastDiv {
+            height: 0;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        #elem {
+            background-color: var(--text-light);
+        }
+
+        #lastDiv {
+            background-color: var(--primary-color);
+            z-index: 3;
+        }
+
+        /* Home Section */
+        .home {
+            height: 100vh;
+            background: linear-gradient(-45deg, #14174e, var(--bg-dark), var(--bg-dark));
+        }
+
+        .home-para-parent {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #homePara {
+            position: relative;
+            left: -100px;
+            top: 20px;
+            width: 350px;
+            height: 150px;
+            font-size: larger;
+        }
+
+        #homePara div {
+            color: #6f4bff;
+        }
+
+        .text-elem {
+            height: 100%;
+            width: 70%;
+            line-height: 1;
+        }
+
+        .word {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .font {
+            overflow: hidden;
+            width: 100%;
+            font-weight: 300;
+            font-size: 14em;
+        }
+
+        .text-elem .two {
+            margin-left: 100px;
+            color: var(--primary-color);
+        }
+
+        .text-elem .three {
+            text-align: right;
+        }
+
+        /* Menu Styles */
+        .menu {
+            position: fixed;
+            z-index: 4;
+            top: 5%;
+            left: 85%;
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .menu button {
+            display: flex;
+            align-items: center;
+            width: 100px;
+            padding: 10px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 100px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .menu:hover button {
+            width: 40px;
+            margin-right: 70px;
+        }
+
+        .menu button i {
+            font-size: 18px;
+            color: var(--text-dark);
+            transform: rotateZ(45deg);
+            transition: 0.2s ease;
+        }
+
+        .menu:hover button i {
+            transform: rotateZ(0);
+        }
+
+        .menu button span {
+            margin-left: 13px;
+            color: var(--text-dark);
+            transition: 0.5s ease;
+        }
+
+        .menu:hover button span,
+        .menu i {
+            color: #c5c5c5;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            height: 85vh;
+            width: 100vw;
+            background-color: var(--text-light);
+            display: flex;
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            transform: translateY(-100%);
+        }
+
+        .nav .navbar {
+            height: 80vh;
+            width: 40vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5.3rem;
+            line-height: 1;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav .widjects {
+            display: flex;
+            width: 60vw;
+            height: 85vh;
+        }
+
+        .nav .widjects .lf-cont {
+            width: 40vw;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            padding: 100px;
+            padding-bottom: 130px;
+        }
+
+        .nav .lf-cont ul {
+            width: 100%;
+            height: max-content;
+        }
+
+        .nav li {
+            list-style: none;
+        }
+
+        .nav .lf-cont li {
+            position: relative;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid;
+            transition: 0.2s ease;
+        }
+
+        .nav .line {
+            display: flex !important;
+            justify-content: space-between;
+        }
+
+        .nav .lf-cont li i {
+            transform: rotateZ(45deg);
+        }
+
+        .nav .lf-cont .discord {
+            border-bottom: 1px solid;
+        }
+
+        .nav .lf-cont .lf-anch {
+            width: 100%;
+            margin-top: 30%;
+        }
+
+        .nav-btn-resume {
+            width: 100%;
+            font-size: 1.4rem;
+            padding: 10px;
+            background-color: var(--text-light);
+            border: 1px solid var(--text-dark);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .nav-btn-resume:hover {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* Section Styles */
+        .home-div-blender {
+            height: 11vh;
+            width: 100%;
+            position: relative;
+            top: -11vh;
+            background: linear-gradient(transparent, var(--bg-dark));
+        }
+
+        .section-one {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-top: 441px;
+        }
+
+        .section-one .cards {
+            height: 60vh;
+            width: 20vw;
+            border: 1px solid var(--gray-normal);
+            margin: 10px;
+            padding: 30px;
+            cursor: pointer;
+            font-size: 22px;
+            fill: #d6d6d6 !important;
+        }
+
+        .section-one .cards .icon {
+            border-bottom: 1px solid var(--gray-normal);
+            height: 55%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-one .cards .icon i {
+            font-size: 40px;
+            opacity: 0;
+        }
+
+        .section-one .cards .text {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-one .cards:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .section-one .cards:hover i {
+            transition: all .8s;
+            opacity: 1;
+        }
+
+        .section-two {
+            height: 170vh;
+            width: 100%;
+            background-color: #fff;
+            margin-top: 20vh;
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 125px;
+            padding-bottom: 125px;
+        }
+
+        .section-two .button {
+            width: 20%;
+            height: 50%;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .section-two .button div {
+            width: 170px;
+            height: 170px;
+            margin-top: 125px;
+            margin-bottom: 125px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #292929;
+            border-radius: 300px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .section-two .button div:hover {
+            width: 150px;
+            height: 150px;
+            transform: rotateZ(35deg);
+        }
+
+        .section-two .images,
+        .about-text {
+            width: 35%;
+            height: 100%;
+        }
+
+        .about-text div {
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            position: sticky;
+            top: 100px;
+            padding-left: 30px;
+            padding-right: 30px;
+            height: calc(50% - 100px);
+            margin-bottom: 125px;
+        }
+
+        .section-two .images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-three {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .section-three .projects-parallax {
+            height: 80vh;
+            padding: 40px;
+        }
+
+        .section-three #head-projects {
+            font-size: 4rem;
+            color: #fff;
+        }
+
+        .section-three .cards-div {
+            height: 73vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .section-three .cards {
+            height: 100%;
+            width: 1000px !important;
+            background-color: #000;
+            margin-left: 10px;
+        }
+
+        .cardsTwo {
+            margin-left: 400px;
+            height: 100%;
+            width: 1000px !important;
+            background-color: #000;
+        }
+
+        .section-three img {
+            width: 1000px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-three .overlay {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            background: linear-gradient(transparent, #000000);
+            color: #fff;
+            padding: 0 50px;
+            padding-bottom: 50px;
+            font-size: 2rem;
+            transform: translateY(-105%);
+            cursor: pointer;
+        }
+
+        .section-four {
+            margin-top: 400px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .section-four .head {
+            font-size: 4rem;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .section-four .screen-game {
+            height: 100vh;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .section-four img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-four .parallax-overlay {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #00000054;
+            color: #fff;
+            padding: 0 50px;
+            padding-bottom: 50px;
+            font-size: 4rem;
+            transform: translateY(-100.51%);
+        }
+
+        .section-four .two {
+            height: 90vh;
+        }
+
+        .section-six {
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .section-five {
+            height: 100vh;
+            width: 100vw;
+            padding: 50px;
+        }
+
+        .section-five .head {
+            font-size: 3rem;
+        }
+
+        .section-five .wrapper {
+            height: 90%;
+            width: 100%;
+            display: flex;
+        }
+
+        .section-five .left-cont {
+            height: 80%;
+            width: 25%;
+            margin-top: 50px;
+            background-color: #6f4bff;
+            border-radius: 20px;
+        }
+
+        .section-five .name {
+            height: calc(100% / 4);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            padding-left: 50px;
+            transition: all .5s ease;
+        }
+
+        .section-five .name:hover {
+            background-color: #5733e7;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        .section-five .right-cont {
+            height: 100%;
+            width: 100%;
+            padding: 30px;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+
+        .section-six .main-text {
+            width: 50%;
+        }
+
+        .section-five .project-div {
+            height: 200px;
+            width: 250px;
+            float: left;
+            margin: 5px;
+        }
+
+        .section-five img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        footer {
+            height: 60vh;
+            width: 100%;
+        }
+
+        footer img {
+            width: 100vw;
+            height: 50%;
+            object-fit: cover;
+        }
+
+        footer .footer-child {
+            height: 70%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer .footer-child div {
+            height: 60%;
+            width: 40%;
+            font-size: 2rem;
+            padding: 20px;
+        }
+
+        footer .footer-child .footer-child-two {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        footer .footer-last-div {
+            font-size: 2rem;
+            width: 100vw;
+            height: 25%;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all .3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1366px) {
+            .font {
+                font-size: 12em;
+            }
+
+            .nav .navbar {
+                font-size: 4.5rem;
+            }
+
+            .section-one {
+                padding-left: 100px;
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .font {
+                font-size: 10em;
+            }
+
+            .nav .navbar {
+                font-size: 4rem;
+                width: 50vw;
+            }
+
+            .nav .widjects {
+                width: 50vw;
+            }
+
+            .nav .widjects .lf-cont {
+                width: 100%;
+                font-size: 1.2rem;
+            }
+
+            .section-one {
+                padding-left: 12vw;
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .font {
+                font-size: 8em;
+            }
+
+            .nav .navbar {
+                font-size: 3rem;
+            }
+
+            .menu {
+                left: 80%;
+            }
+
+            #homePara {
+                width: 250px;
+                font-size: medium;
+            }
+
+            .section-one {
+                padding-left: 10vw;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader Section -->
+    <div id="loader">
+        <div id="fsDiv">
+            <span id="loadText">Hey</span>
+            <span id="loadText">&nbsp;it's</span>
+            <span id="loadText">&nbsp;a</span>
+            <span id="loadText">&nbsp;portfolio</span>
+            <span id="loadText">&nbsp;of</span>
+        </div>
+        <div id="elem"></div>
+        <div id="lastDiv"></div>
+    </div>
+
+    <!-- Main Content -->
+    <header>
+        <!-- Menu Button -->
+        <div class="menu" onclick="menuReveal()">
+            <button>
+                <div><i class='bx bx-up-arrow-alt'></i></div>
+                <span>Menu</span>
+            </button>
+            <i class='bx bx-menu'></i>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="navbar">
+                <ul>
+                    <a href="#" onclick="menuFunction()">
+                        <li class="textAnimationNav">Home</li>
+                    </a>
+                    <a href="#profile" onclick="menuFunction()">
+                        <li class="textAnimationNav">Profile</li>
+                    </a>
+                    <a href="#section-two" onclick="menuFunction()">
+                        <li class="textAnimationNav">About</li>
+                    </a>
+                    <a href="#project-section" onclick="menuFunction()">
+                        <li class="textAnimationNav">Projects</li>
+                    </a>
+                    <a href="#footer" onclick="menuFunction()">
+                        <li class="textAnimationNav">Contact</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="widjects">
+                <div class="lf-cont">
+                    <ul>
+                        <a href="https://join.skype.com/invite/vL4e0F6gu3yU" target="_blank">
+                            <li class="textAnimationNavTwo">Skype<i class='bx bx-up-arrow-alt'></i></li>
+                        </a>
+                        <a href="https://github.com/Ratneshkhirwar/Ratnesh-Khirwar_Full-Stack-Developer" target="_blank">
+                            <li class="textAnimationNavTwo">Git-Hub<i class='bx bx-up-arrow-alt'></i>
+                            </li>
+                        </a>
+                        <a href="https://discord.com/channels/@me" target="_blank">
+                            <li class="discord nav-link textAnimationNavTwo">Discord<i class='bx bx-up-arrow-alt'></i>
+                            </li>
+                        </a>
+                    </ul>
+                    <a class="lf-anch" href="./resume.html" target="_blank"><button
+                            class="nav-btn-resume">Resume</button></a>
+                </div>
+                <div class="rt-cont"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Main Content Sections -->
+        <div class="non-menu">
+            <section class="home" id="home">
+                <div class="text-elem">
+                    <div id="text-Reveal" class="font one">Ratnesh</div>
+                    <div class="home-para-parent">
+                        <div id="text-Reveal" class="font two text-black">Sunil</div>
+                        <div id="homePara">
+                            <div>Websites that makes you step out of this world</div>
+                            <span>A leading Developer and designer, experince of 9 monthes || meet me --</span>
+                        </div>
+                    </div>
+                    <div id="text-Reveal" class="font three">Khirwar</div>
+                </div>
+            </section>
+
+            <div class="home-div-blender"></div>
+
+            <section class="section-one" id="profile">
+                <div class="cards">
+                    <div class="icon"><i class='bx bxs-brush'></i></div>
+                    <div class="text">
+                        A Fantastic Artist from more than 4 years
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="icon"><i class='bx bx-code-alt'></i></div>
+                    <div class="text">
+                        React and Node Developer with a special talent
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="icon"><i class='bx bx-desktop'></i></div>
+                    <div class="text">
+                        A Web Designer better than you think
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-two" id="section-two">
+                <div class="button">
+                    <a href="./resume.html" style="text-decoration: none;">
+                        <div><i class="material-icons-outlined" style="font-size: 50px">arrow_upward</i></div>
+                    </a>
+                </div>
+                <div class="images">
+                    <img src="https://marketplace.canva.com/EAFLLChnpe8/1/0/450w/canva-blue-white-aesthetic-quotes-phone-wallpaper-Apw2zHBajZE.jpg"
+                        alt="">
+                </div>
+                <div class="about-text">
+                    <div>
+                        I am a passionate 14-year-old coder with a strong interest in science and technology. I have
+                        experience with machine learning, Node.js, and GSAP animations, constantly improving my skills
+                        and exploring new technologies. I enjoy building interactive and dynamic applications, focusing
+                        on both frontend and backend development. Real-life examples help me understand complex
+                        concepts, and I always strive to push my coding abilities further.
+                    </div>
+                </div>
+            </section>
+
+            <section id="sectionThree" class="section-three">
+                <div class="projects-parallax">
+                    <div id="head-projects">Thing that you are intrested in</div>
+                    <div class="cards-div">
+                        <a href="./burger.html" target="_blank">
+                            <div class="cards card">
+                                <img src="./Screenshot 2024-12-28 201857.png" alt="">
+                                <div class="overlay">Burger King</div>
+                            </div>
+                        </a>
+                        <a href="./bootstrap.html" target="_blank">
+                            <div class="cardsTwo card">
+                                <img src="./Screenshot 2024-12-28 201936.png" alt="">
+                                <div class="overlay">Rai Enterprices</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-four">
+                <div>
+                    <div class="head">I Also Tried...</div>
+                </div>
+                <div class="screen-game one">
+                    <img src="https://r4.wallpaperflare.com/wallpaper/898/294/539/call-of-duty-call-of-duty-modern-warfare-2-illustration-digital-art-4k-hd-wallpaper-58a69d2800401c48e04cf11e68c2444a.jpg"
+                        alt="">
+                    <div class="parallax-overlay">Game Development</div>
+                </div>
+                <div class="screen-game two">
+                    <img src="https://cdn.prod.website-files.com/5f6c71314a8db82b6218d0ea/649c6e53e5d5f7a700515a6d_20230628T0530-c149e0c2-dda0-47fa-bcd1-ca77289ac72e.jpeg"
+                        alt="">
+                    <div class="parallax-overlay">3d Development</div>
+                </div>
+            </section>
+
+            <section class="section-five" id="project-section">
+                <div class="head">Some of the other projects include</div>
+                <div class="wrapper">
+                    <div class="left-cont">
+                        <div class="name" onclick="renderProjects(1)">HTML,CSS project</div>
+                        <div class="name" onclick="renderProjects(2)">Javascript project</div>
+                        <div class="name" onclick="renderProjects(3)">Bootstrap project</div>
+                        <div class="name" onclick="renderProjects(4)">React project</div>
+                    </div>
+                    <div class="right-cont" id="rightCont">
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-six">
+                <div class="main-text">I have a keen interest in exploring different programming techniques and
+                    improving the efficiency of my code. I enjoy experimenting with animations, interactivity, and
+                    optimizing user experiences. Problem-solving is something I find exciting, and I like tackling
+                    challenges that push me to think creatively.</div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer id="footer">
+        <img src="https://free-3dtextureshd.com/wp-content/uploads/2024/02/5.jpg.webp" alt="">
+        <div class="footer-child">
+            <div>Thank You,
+                <br> Ratnesh Khirwar
+            </div>
+            <div class="footer-child-two">
+                <div>
+                    <a href="https://join.skype.com/invite/vL4e0F6gu3yU" target="_blank">
+                        <div>Skype</div>
+                    </a>
+                    <a href="https://discord.com/channels/@me" target="_blank">
+                        <div>Discord</div>
+                    </a>
+                    <a href="https://github.com/Ratneshkhirwar/Ratnesh-Khirwar_Full-Stack-Developer" target="_blank">
+                        <div>Git-Hub</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div>Home</div>
+                    </a>
+                    <a href="#profile">
+                        <div>Profile</div>
+                    </a>
+                    <a href="#section-two">
+                        <div>About</div>
+                    </a>
+                    <a href="#project-section">
+                        <div>Projects</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-last-div">★ Made by Ratnesh ★ Powered by Enjoy Programming</div>
+    </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
