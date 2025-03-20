@@ -101,9 +101,6 @@
         }
 
         #homePara {
-            position: relative;
-            left: -100px;
-            top: 20px;
             width: 350px;
             height: 150px;
             font-size: larger;
@@ -649,7 +646,7 @@
             color: var(--primary-color);
         }
 
-        /* Media Queries */
+        /* For screens smaller than 1366px */
         @media (max-width: 1366px) {
             .font {
                 font-size: 12em;
@@ -660,11 +657,27 @@
             }
 
             .section-one {
-                padding-left: 100px;
                 font-size: 3.5rem;
+            }
+
+            .section-five .left-cont {
+                width: 30%;
+            }
+
+            .section-two .about-text {
+                font-size: 1.4rem;
+            }
+
+            .section-three .overlay {
+                margin-top: 40px;
+            }
+
+            .section-five .right-cont {
+                width: 70%;
             }
         }
 
+        /* For screens smaller than 1024px */
         @media (max-width: 1024px) {
             .font {
                 font-size: 10em;
@@ -685,11 +698,66 @@
             }
 
             .section-one {
-                padding-left: 12vw;
                 font-size: 3rem;
             }
+
+            .section-one .cards {
+                width: 300px;
+            }
+
+            .section-two .button div {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section-two .button i {
+                font-size: 30px !important;
+            }
+
+            .section-five .left-cont {
+                width: 35%;
+            }
+
+            .section-five .right-cont {
+                width: 65%;
+            }
+
+            .section-five .project-div {
+                height: 180px;
+                width: 220px;
+            }
+
+            .section-two {
+                height: auto;
+            }
+
+            .section-three .cards-div {
+                height: auto;
+            }
+
+            .section-two .images img {
+                width: 100%;
+                height: auto;
+            }
+
+            .section-two .about-text div {
+                font-size: 1.2rem;
+            }
+
+
+            .section-three .cards-div {
+                grid-template-columns: 1fr;
+            }
+
+            .section-three .cards,
+            .cardsTwo {
+                width: 100% !important;
+                margin-left: 0;
+            }
+
         }
 
+        /* For screens smaller than 768px */
         @media (max-width: 768px) {
             .font {
                 font-size: 8em;
@@ -711,6 +779,269 @@
             .section-one {
                 padding-left: 10vw;
                 font-size: 2.5rem;
+            }
+
+            .section-two .button div {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-five .left-cont {
+                width: 40%;
+            }
+
+            .section-five .right-cont {
+                width: 60%;
+            }
+
+            .section-five .project-div {
+                height: 150px;
+                width: 200px;
+            }
+
+            .section-six .main-text {
+                width: 80%;
+                font-size: 1.8rem;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .nav .navbar,
+            .nav .widjects {
+                width: 100%;
+                height: auto;
+            }
+
+            .nav .widjects .lf-cont {
+                padding: 30px;
+            }
+
+            .section-one {
+                flex-direction: column;
+                height: auto;
+                padding: 50px 20px;
+            }
+
+            .section-one .cards {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .section-four .head {
+                font-size: 3rem;
+                text-align: center;
+            }
+
+            .section-four .parallax-overlay {
+                font-size: 3rem;
+                text-align: center;
+            }
+        }
+
+        /* For screens smaller than 480px */
+        @media (max-width: 480px) {
+            .menu {
+                left: 5%;
+            }
+
+
+            .nav .navbar {
+                justify-content: left;
+                padding-left: 40px;
+                padding-top: 40px;
+            }
+
+            .home {
+                padding-top: 100px;
+            }
+
+            .home .line {
+                height: 80px;
+                font-size: 5.2rem;
+                text-align: left !important;
+            }
+
+            .text-elem {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .home #homePara {
+                width: 250px;
+                height: 100%;
+                font-size: .5rem;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .section-two {
+                flex-direction: column;
+                justify-content: center;
+                position: static;
+                padding: 30px;
+            }
+
+            .section-two .button {
+                height: 150px;
+                margin-left: calc(50% - 30px);
+                position: static;
+            }
+
+            .section-two .button div {
+                height: 100px;
+                width: 100px;
+            }
+
+            .section-two img {
+                display: none;
+            }
+
+            .section-two .about-text {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            
+            .section-two .about-text div {
+                padding: 0;
+                text-align: center;
+            }
+
+            .section-three .cards-div div {
+                height: 40vh;
+                margin-top: 20px;
+            }
+
+            .section-three .overlay {
+                padding-bottom: 40px;
+            }
+
+            .section-five .name {
+                padding: 20px;
+            }
+
+            .section-five .left-cont {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .section-five {
+                height: auto;
+            }
+
+            .section-five .right-cont {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .section-five .project-div {
+                height: 120px;
+                width: 150px;
+            }
+
+            .section-six .main-text {
+                width: 90%;
+                font-size: 1.5rem;
+            }
+
+            .text-elem {
+                width: 100%;
+            }
+
+            .text-elem .two {
+                margin-left: 20px;
+            }
+
+            #homePara {
+                left: 0;
+                width: 100%;
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            .section-three #head-projects {
+                font-size: 2.5rem;
+            }
+
+            .section-three .overlay {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+
+            .nav .lf-cont .lf-anch {
+                margin-top: 20px;
+            }
+
+
+            .section-five {
+                padding: 20px;
+            }
+
+            .section-five .wrapper {
+                flex-direction: column;
+            }
+
+            .section-five .head {
+                font-size: 2rem;
+            }
+
+            .section-five .project-div {
+                width: calc(50% - 10px);
+                height: 120px;
+            }
+
+            .section-six .main-text{
+                font-size: 20px !important;
+                text-align: center;
+            }
+            
+
+            footer .footer-child {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            footer .footer-child div {
+                height: 50%;
+                font-size: 20px;
+                width: 100%;
+                padding: 20px;
+            }
+            footer .footer-child-two div{
+                padding: 0;
+            }
+
+            footer .footer-last-div{
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Add styles for larger screens */
+        @media (min-width: 1920px) {
+            .font {
+                font-size: 16em;
+            }
+
+            .section-one {
+                font-size: 5rem;
+            }
+
+            .section-two .button div {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section-three #head-projects {
+                font-size: 5rem;
+            }
+
+            .section-five .project-div {
+                height: 250px;
+                width: 300px;
             }
         }
     </style>
@@ -946,11 +1277,11 @@
     </div>
 
     <!-- Scripts -->
-<script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
         integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest"></script>
     <script src="./script.js"></script>
 </body>
