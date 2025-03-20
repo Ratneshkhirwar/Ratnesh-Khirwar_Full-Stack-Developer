@@ -3,6 +3,7 @@ const button = document.getElementById("menuButton");
 let canClick = true;
 let menuRevealed = false;
 const tl = gsap.timeline();
+const screenwidth = screen.width;
 
 const splitText = new SplitType(".textAnimationNav", {
   charClass: "nav-char",
@@ -154,8 +155,7 @@ gsap.to("#home", {
     trigger: "#home",
     scroller: "body",
     scrub: 1,
-    start: "100px top",
-    end: "50% 10vh",
+    start: "3% top",
   },
 });
 
@@ -211,29 +211,48 @@ gsap.from("#head-projects", {
     start: "2800px top",
   },
 });
+let animations = []; // Store animations to remove them later
 
-gsap.to(".card", {
-  x: "-90%",
-  scrollTrigger: {
-    trigger: "#sectionTwo",
-    scroller: "body",
-    start: "3370px top",
-    end: "4000px top",
-    scrub: 1,
-    toggleActions: "play none none reverse",
-  },
-});
+function initAnimations() {
+  animations.forEach((anim) => anim.scrollTrigger?.kill());
+  animations = []; // Clear the array
 
-gsap.to(".cards-div", {
-  marginTop: "400px",
-  scrollTrigger: {
-    trigger: "#sectionTwo",
-    scroller: "body",
-    start: "3450px top",
-    end: "4000px top",
-    scrub: true,
-    toggleActions: "play none none reverse",
-  },
+  if (window.innerWidth >= 1023) {
+    animations.push(
+      gsap.to(".card", {
+        x: "-90%",
+        scrollTrigger: {
+          trigger: "#sectionTwo",
+          scroller: "body",
+          start: "top+=3370px top",
+          end: "top+=4000px top",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      })
+    );
+
+    animations.push(
+      gsap.to(".cards-div", {
+        marginTop: "400px",
+        scrollTrigger: {
+          trigger: "#sectionTwo",
+          scroller: "body",
+          start: "top+=3450px top",
+          end: "top+=4000px top",
+          scrub: true,
+          toggleActions: "play none none reverse",
+        },
+      })
+    );
+  }
+}
+
+initAnimations();
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh(); // Refresh GSAP animations
+  initAnimations();
 });
 
 gsap.from(".section-four .head", {
