@@ -166,8 +166,8 @@ gsap.to(".char", {
     trigger: "#home",
     scroller: "body",
     scrub: true,
-    start: "10vh top",
-    end: "430px top",
+    start: "10% top",
+    end: "39.81% top",
   },
 });
 
@@ -185,7 +185,7 @@ gsap.to(".projects-parallax", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "2900px top",
+    start: "35% top",
     toggleActions: "play none none reverse",
   },
 });
@@ -195,9 +195,9 @@ gsap.from(".cards-div", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "3100px top",
+    start: "37% top",
+    end: "39% top",
     scrub: true,
-    end: "3250px top",
   },
 });
 
@@ -208,9 +208,10 @@ gsap.from("#head-projects", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "2800px top",
+    start: "33% top",
   },
 });
+
 let animations = []; // Store animations to remove them later
 
 function initAnimations() {
@@ -224,8 +225,8 @@ function initAnimations() {
         scrollTrigger: {
           trigger: "#sectionTwo",
           scroller: "body",
-          start: "top+=3370px top",
-          end: "top+=4000px top",
+          start: "41% top",
+          end: "47% top",
           scrub: 1,
           toggleActions: "play none none reverse",
         },
@@ -238,8 +239,8 @@ function initAnimations() {
         scrollTrigger: {
           trigger: "#sectionTwo",
           scroller: "body",
-          start: "top+=3450px top",
-          end: "top+=4000px top",
+          start: "41% top",
+          end: "47% top",
           scrub: true,
           toggleActions: "play none none reverse",
         },
@@ -261,7 +262,7 @@ gsap.from(".section-four .head", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "4250px top",
+    start: "50% top",
     toggleActions: "play none none reverse",
   },
 });
@@ -271,8 +272,8 @@ gsap.to(".section-four .head", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "4500px top",
-    end: "5000px top",
+    start: "53% top",
+    end: "60% top",
     scrub: true,
     toggleActions: "play none none reverse",
   },
@@ -283,8 +284,8 @@ gsap.to(".section-four .one", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "4500px top",
-    end: "5500px top",
+    start: "53% top",
+    end: "60% top",
     scrub: 1,
     toggleActions: "play none none reverse",
   },
@@ -295,8 +296,8 @@ gsap.to(".section-four .two", {
   scrollTrigger: {
     trigger: "#sectionTwo",
     scroller: "body",
-    start: "4800px top",
-    end: "5500px top",
+    start: "55% top",
+    end: "68% top",
     scrub: 1,
     toggleActions: "play none none reverse",
   },
